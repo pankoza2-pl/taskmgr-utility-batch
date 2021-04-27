@@ -1,5 +1,7 @@
 @echo off
 title Task Manager Utility by Creper132 (modded by pankoza-pl) (Run as Administrator)
+:main
+cls
 echo (1) Turn on task manager
 echo (2) Turn off task manager
 echo (3) Kill task manager
@@ -11,13 +13,13 @@ if %select%==3 goto 3
 if %select%==4 goto 4
 :1
 reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\System /v DisableTaskMgr /t REG_DWORD /d 0 /f
-exit
+goto main
 :2
 reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\System /v DisableTaskMgr /t REG_DWORD /d 1 /f
-exit
+goto main
 :3
 taskkill /f /im taskmgr.exe /t
-exit
+goto main
 :4
 start taskmgr.exe
-exit
+goto main
